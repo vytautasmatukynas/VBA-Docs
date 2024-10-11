@@ -67,6 +67,28 @@ Sub CollectionExample()
 
 End Sub
 
+Sub ConvertArrayToCollection()
+    ' Declare and initialize an array
+    Dim arr() As Variant
+    arr = Array("Apple", "Banana", "Cherry") ' Sample array
+    
+    ' Declare a Collection
+    Dim col As Collection
+    Set col = New Collection
+    
+    ' Loop through the array and add each element to the Collection
+    Dim i As Integer
+    For i = LBound(arr) To UBound(arr)
+        col.Add arr(i)
+    Next i
+    
+    ' Display the elements of the Collection
+    Dim item As Variant
+    For Each item In col
+        MsgBox item ' Show each item in a message box
+    Next item
+End Sub
+
 Array Methods:
 
     UBound(ArrayName)
