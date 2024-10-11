@@ -1,0 +1,42 @@
+1. Arithmetic Operators
+
+These operators perform mathematical calculations.
+
+    +: Addition
+    -: Subtraction
+    *: Multiplication
+    /: Floating-point division
+    \: Integer division
+    Mod: Remainder division
+
+2. Comparison Operators
+
+These operators compare two values and return a Boolean value (True or False).
+
+    =: Equal to
+    <>: Not equal to
+    >: Greater than
+    <: Less than
+    >=: Greater than or equal to
+    <=: Less than or equal to
+    Like: Pattern matching (with wildcards)
+    Is: Checks if two object variables refer to the same object
+    TypeOf ... Is: Checks the type of an object variable
+
+3. Logical Operators
+
+These operators are used to combine conditional statements.
+
+    And: Returns True if both conditions are true.
+    Or: Returns True if at least one condition is true.
+    Xor: Returns True if exactly one of the conditions is true.
+    Not: Reverses the value of the condition.
+    Eqv: Returns True if both conditions are logically equivalent.
+    Imp: Conditional implication (if the first is true, the second must be true).
+
+4. Concatenation Operators
+
+These operators join strings together.
+
+    &: Concatenation with implicit string conversion.
+    +: Concatenation without implicit string conversion (can cause errors if used with non-string values).

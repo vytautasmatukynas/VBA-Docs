@@ -1,0 +1,42 @@
+'1. Abs: Returns the absolute value of a number (without sign)
+Dim num As Double
+num = -5.25
+Debug.Print Abs(num)  ' Output: 5.25
+
+'2. Sqr: Returns the square root of a number
+num = 16
+Debug.Print Sqr(num)  ' Output: 4
+
+'3. Int: Returns the integer portion of a number (rounds down)
+num = 5.75
+Debug.Print Int(num)  ' Output: 5
+
+'4. Round: Rounds a number to a specified number of decimal places
+num = 5.6789
+Debug.Print Round(num, 2)  ' Output: 5.68
+
+'5. Fix: Returns the integer portion of a number (removes the fractional part without rounding)
+num = -5.75
+Debug.Print Fix(num)  ' Output: -5
+
+'6. Log: Returns the natural logarithm (base e) of a number
+num = 10
+Debug.Print Log(num)  ' Output: 2.302585 (approx)
+
+'7. Exp: Returns the value of e raised to the power of a number
+num = 1
+Debug.Print Exp(num)  ' Output: 2.718282 (approx)
+
+'8. Sin, Cos, Tan: Returns the sine, cosine, or tangent of an angle in radians
+Dim angle As Double
+angle = 3.14159 / 4  ' 45 degrees in radians
+Debug.Print Sin(angle)  ' Output: 0.70710678
+Debug.Print Cos(angle)  ' Output: 0.70710678
+Debug.Print Tan(angle)  ' Output: 1
+
+'9. Rnd: Returns a random number between 0 and 1
+Debug.Print Rnd()  ' Output: Random value between 0 and 1
+
+'10. Atn: Returns the arctangent of a number, result is in radians
+num = 1
+Debug.Print Atn(num)  ' Output: 0.785398 (45 degrees in radians)

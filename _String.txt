@@ -1,0 +1,36 @@
+'1. Len: Returns the length of a string
+Dim text As String
+text = "Hello"
+Debug.Print Len(text)  ' Output: 5
+
+'2. Left: Returns a specified number of characters from the left side of a string
+Debug.Print Left(text, 2)  ' Output: "He"
+
+'3. Right: Returns a specified number of characters from the right side of a string
+Debug.Print Right(text, 3)  ' Output: "llo"
+
+'4. Mid: Returns a portion of a string from a specified starting position and for a specific length
+Debug.Print Mid(text, 2, 3)  ' Output: "ell"
+
+'5. InStr: Returns the position of the first occurrence of a substring in a string
+Debug.Print InStr(text, "World")  ' Output: 7 (for "Hello World")
+
+'6. Replace: Replaces all occurrences of a substring within a string with another substring
+text = "Hello World"
+Debug.Print Replace(text, "World", "VBA")  ' Output: "Hello VBA"
+
+'7. LCase: Converts a string to lowercase
+Debug.Print LCase(text)  ' Output: "hello world"
+
+'8. UCase: Converts a string to uppercase
+Debug.Print UCase(text)  ' Output: "HELLO WORLD"
+
+'9. Trim: Removes leading and trailing spaces from a string
+text = "  Hello  "
+Debug.Print Trim(text)  ' Output: "Hello"
+
+'10. StrComp: Compares two strings and returns 0 if equal, 1 if the first is greater, -1 if the second is greater
+Dim text1 As String, text2 As String
+text1 = "Hello"
+text2 = "Hello"
+Debug.Print StrComp(text1, text2)  ' Output: 0
