@@ -1,0 +1,35 @@
+Option Explicit 'Enforces variable declaration, reducing errors from misspelled variable names
+
+Sub main()
+
+    'Declare a variable to hold the SolidWorks application object
+    Dim swApp As SldWorks.SldWorks
+    'Declare a variable to hold the active model document
+    Dim swModel As SldWorks.ModelDoc2
+    'Declare a variable for dimension manipulation
+    Dim swDim As SldWorks.Dimension
+    
+    'Set the swApp variable to reference the currently running instance of SolidWorks
+    Set swApp = Application.SldWorks
+    
+    'Set the swModel variable to reference the active document (part, assembly, or drawing) in SolidWorks
+    Set swModel = swApp.ActiveDoc
+    
+    'Get the dimension and change its value
+    Set swDim = swModel.Parameter("D1@Sketch5") 'Change to the specific parameter name as needed
+
+    'Print the file path, full name, and name of the dimension to the debug window
+    Debug.Print "File = " & swModel.GetPathName
+    Debug.Print "Full name = " & swDim.FullName
+    Debug.Print "Name = " & swDim.Name
+    
+    'Set the dimension value to 0.03 in the current configuration
+    swDim.SetSystemValue3 0.03, swSetValue_InThisConfiguration, Empty
+
+    'Force a rebuild of the model to update the changes
+    swModel.ForceRebuild3 False
+    
+    'Save file and pop message if saved
+    swModel.Save3 swSaveAsOptions_Silent, Empty, Empty
+    
+End Sub

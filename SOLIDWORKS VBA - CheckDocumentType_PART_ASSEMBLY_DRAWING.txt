@@ -1,0 +1,27 @@
+Option Explicit 'Enforces variable declaration, reducing errors from misspelled variable names
+
+Sub main()
+
+    'Declare a variable to hold the SolidWorks application object
+    Dim swApp As SldWorks.SldWorks
+    'Declare a variable to hold the active model document
+    Dim swModel As SldWorks.ModelDoc2
+
+    
+    'Set the swApp variable to reference the currently running instance of SolidWorks
+    Set swApp = Application.SldWorks
+
+    'Set the swModel variable to reference the active document (part, assembly, or drawing) in SolidWorks
+    Set swModel = swApp.ActiveDoc
+    
+    'Test document type; if not equal to PART then exit the subroutine
+    If swModel.GetType <> swDocPART Then
+        'Display a warning message if the active document is not a PART file
+        swApp.SendMsgToUser2 "Not PART file", swMbWarning, swMbOk
+        Exit Sub
+    Else
+        'Prompt user for configuration name and store the input
+        swApp.SendMsgToUser2 "PART file", swMbInformation, swMbOk
+    End If
+    
+End Sub
