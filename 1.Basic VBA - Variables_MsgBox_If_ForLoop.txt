@@ -1,0 +1,43 @@
+Option Explicit 'Enforces variable declaration, reducing errors from misspelled variable names
+
+' Declare variables
+Dim intHeight As Double    'Variable to store the height of the shape
+Dim intWidth As Double     'Variable to store the width of the shape
+Dim intArea As Double      'Variable to store the calculated area
+Dim strText As String      'Variable to store the first message string
+Dim strText2 As String     'Variable to store the second message string
+Dim boolConfirm As Boolean  'Variable to store a confirmation flag
+Dim intForItem As Integer   'Variable for loop iteration count
+
+Sub main()
+
+    'Initialize dimensions
+    intHeight = 1             'Set height to 1
+    intWidth = 5.1254        'Set width to 5.1254
+    
+    'Calculate the area of the shape
+    intArea = intHeight * intWidth
+    
+    'Set message strings
+    strText = "LABAS!!!<---"  'First message to display
+    strText2 = "VISO!!!<---"   'Second message to display
+    
+    'Display the calculated area in a message box
+    MsgBox "Area: " & intArea
+    
+    boolConfirm = False        'Initialize confirmation flag as False
+    
+    'Check if the confirmation flag is True or the area is less than 30
+    If boolConfirm = True Or intArea < 30 Then
+        MsgBox strText        'Display the first message if the condition is met
+    Else
+        'Loop through numbers 1 to 3
+        For intForItem = 1 To 3
+            MsgBox "Number: " & intForItem 'Display the current loop number
+        Next intForItem
+        
+        'Display the second message after the loop
+        MsgBox strText2
+    End If
+
+End Sub

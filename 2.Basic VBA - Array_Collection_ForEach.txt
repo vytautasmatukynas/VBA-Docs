@@ -1,0 +1,108 @@
+Option Explicit
+
+Sub ArrayExample()
+
+    ' Declare an array with 5 elements
+    Dim arr(4) As Integer
+    
+    ' Fill the array with values
+    Dim i As Integer
+    For i = LBound(arr) To UBound(arr)
+        arr(i) = i * 10
+    Next i
+    
+    ' Display array elements using For loop
+    For i = LBound(arr) To UBound(arr)
+        MsgBox "Array element at index " & i & " is " & arr(i)
+    Next i
+    
+    ' Use For Each loop to display elements
+    Dim element As Variant
+    For Each element In arr
+        MsgBox "Array element: " & element
+    Next element
+    
+    ' Resize the array and preserve the values
+    ReDim Preserve arr(6)
+    arr(5) = 50
+    arr(6) = 60
+    
+    ' Display the resized array elements
+    For i = LBound(arr) To UBound(arr)
+        MsgBox "After resizing, array element at index " & i & " is " & arr(i)
+    Next i
+    
+End Sub
+
+Sub CollectionExample()
+
+    ' Declare a new collection
+    Dim coll As Collection
+    Set coll = New Collection
+    
+    ' Add elements to the collection
+    coll.Add "Item1"
+    coll.Add "Item2"
+    coll.Add "Item3"
+    
+    ' Display collection items using For loop (using Item and Count methods)
+    Dim i As Integer
+    For i = 1 To coll.Count
+        MsgBox "Collection item at index " & i & " is " & coll.Item(i)
+    Next i
+    
+    ' Use For Each loop to display elements
+    Dim item As Variant
+    For Each item In coll
+        MsgBox "Collection item: " & item
+    Next item
+    
+    ' Remove an item from the collection
+    coll.Remove 2 ' Removes the second item (Item2)
+    
+    ' Display remaining collection items
+    For i = 1 To coll.Count
+        MsgBox "Remaining collection item at index " & i & " is " & coll.Item(i)
+    Next i
+
+End Sub
+
+Array Methods:
+
+    UBound(ArrayName)
+        Returns the upper bound (highest index) of the array.
+        Example: UBound(arr)
+
+    LBound(ArrayName)
+        Returns the lower bound (lowest index) of the array.
+        Example: LBound(arr)
+
+    IsArray(VariableName)
+        Checks if a variable is an array.
+        Example: IsArray(arr)
+
+    ReDim ArrayName(Size)
+        Resizes a dynamic array.
+        Example: ReDim arr(5)
+
+    ReDim Preserve ArrayName(Size)
+        Resizes an array while preserving its contents.
+        Example: ReDim Preserve arr(10)
+
+Collection Methods:
+
+    Add(Item)
+        Adds an item to the collection.
+        Example: coll.Add "NewItem"
+
+    Remove(Index)
+        Removes an item from the collection at the specified index.
+        Example: coll.Remove 1
+
+    Count
+        Returns the number of elements in the collection.
+        Example: coll.Count
+
+    Item(Index)
+        Returns an item from the collection at the specified index.
+        Example: coll.Item(1)
