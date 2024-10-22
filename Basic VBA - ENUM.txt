@@ -1,0 +1,32 @@
+'Define an enumeration for fruit types
+Public Enum FruitType
+    Apple = 1
+    Banana = 2
+    Cherry = 3
+    Grape = 4
+    Orange = 5
+End Enum
+
+Sub HandleFruit()
+    Dim myFruit As FruitType
+
+    'Assign a value to the enum variable
+    myFruit = FruitType.Apple
+
+    'Check the value using Select Case
+    Select Case myFruit
+        Case FruitType.Apple
+            MsgBox "You chose an Apple."
+        Case FruitType.Banana
+            MsgBox "You chose a Banana."
+        Case FruitType.Cherry
+            MsgBox "You chose a Cherry."
+        Case FruitType.Grape
+            MsgBox "You chose a Grape."
+        Case FruitType.Orange
+            MsgBox "You chose an Orange."
+        Case Else
+            MsgBox "Unknown fruit."
+    End Select
+
+End Sub
