@@ -1,0 +1,63 @@
+Option Explicit 'Enforces variable declaration, reducing errors from misspelled variable names
+
+Sub main()
+
+    'Declare a variable to hold the SolidWorks application object
+    Dim swApp As SldWorks.SldWorks
+    
+    'Declare a variable to hold the opened model document (part or drawing)
+    Dim swModel As SldWorks.ModelDoc2
+    
+    'Declare a variable to hold the opened drawing document
+    Dim swOpenDoc As SldWorks.ModelDoc2
+    
+    'Declare a variable specifically to hold the drawing document
+    Dim swDraw As SldWorks.DrawingDoc
+    
+    'Declare a string variable to hold the file path to the drawing
+    Dim modelDrawingPath As String
+    
+    'Declare a string variable to hold the file path to the part model
+    Dim strModelPath As String
+    
+    'Set the swApp variable to reference the currently running instance of SolidWorks
+    Set swApp = Application.SldWorks
+    
+    'Get the currently active document in SolidWorks and set it to swModel
+    'This retrieves the part or drawing that is currently open and active in SolidWorks
+    Set swModel = swApp.ActiveDoc
+    
+    'Set the part file path for future reference (the part you want to link to the drawing)
+    'This defines the location of the part model on your computer
+    strModelPath = "C:\Users\vytau\OneDrive\Desktop\Part1.SLDPRT"
+    
+    'Set the drawing file path for the drawing you want to open
+    'This specifies the location of the drawing file (.SLDDRW) on your computer
+    modelDrawingPath = "C:\Users\vytau\OneDrive\Desktop\Part1.SLDDRW"
+    
+    'Open the drawing document using the OpenDoc6 method. The arguments include:
+    ' - modelDrawingPath: Path of the drawing file
+    ' - 3: Document type (3 corresponds to a drawing document)
+    ' - swOpenDocOptions_Silent: Open silently without displaying dialogs or prompts
+    ' - Empty: Other arguments (e.g., for error handling or warnings) are left empty for simplicity
+    Set swOpenDoc = swApp.OpenDoc6(modelDrawingPath, 3, swOpenDocOptions_Silent, Empty, Empty, Empty)
+    
+    'Set swDraw to refer to the opened document (the drawing)
+    'Even though swModel is already assigned to the active document, it's of a general type (ModelDoc2), 
+    'which can represent a part, assembly, or drawing. 
+    'However, for drawing-specific operations, you need to cast swModel to the DrawingDoc type.
+    'Casting is important because the DrawingDoc object has additional methods and properties
+    'that are not available in the general ModelDoc2 object (e.g., creating drawing views, inserting annotations).
+    'Here, swModel (a general ModelDoc2 object) is being cast to swDraw (a DrawingDoc object), 
+    'so you can access drawing-specific functionality.
+    Set swDraw = swModel
+    
+    'Commented out line - Create 1st angle views (e.g., front, top, right views) based on the part model
+    swDraw.Create1stAngleViews2 strModelPath
+    
+    'Insert model dimensions and annotations into the drawing. This method automatically brings in
+    'any model items such as dimensions that are marked for drawing in the part or assembly.
+    swDraw.InsertModelAnnotations3 swImportModelItemsFromEntireModel, swInsertDimensionsMarkedForDrawing, _
+    True, True, False, True
+
+End Sub

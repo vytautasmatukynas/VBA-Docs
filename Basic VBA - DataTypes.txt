@@ -1,0 +1,37 @@
+1. Numeric Data Types
+
+    Integer: A 16-bit signed integer, ranging from -32,768 to 32,767.
+    Long: A 32-bit signed integer, suitable for larger whole numbers, ranging from -2,147,483,648 to 2,147,483,647.
+    Single: A 32-bit single-precision floating-point number, used for decimal values.
+    Double: A 64-bit double-precision floating-point number, used for high-precision decimal values.
+    Currency: A 64-bit fixed-point number, useful for financial calculations, allowing for 4 decimal places.
+
+2. String Data Types
+
+    String: A sequence of characters, which can hold up to approximately 2 billion characters. Strings can be declared as fixed-length or variable-length.
+    String*: A fixed-length string type.
+
+3. Boolean Data Type
+
+    Boolean: Represents a truth value: True or False.
+
+4. Date/Time Data Type
+
+    Date: A data type that stores date and time values, ranging from January 1, 1753, to December 31, 9999.
+
+5. Object Data Types
+
+    Object: A generic object type that can hold any object reference.
+    Variant: A special data type that can contain any kind of data except fixed-length strings. It's useful for cases where the type of data isn't known in advance.
+
+6. Array Data Types
+
+    Arrays: A collection of variables of the same type. Arrays can be one-dimensional or multi-dimensional.
+
+7. User-Defined Data Types
+
+    Type: Allows the creation of custom data types by grouping multiple variables of different types under a single name.
+
+8. Variant Data Type
+
+    Variant: A special data type that can contain any type of data except for fixed-length strings, making it flexible for various data assignments.

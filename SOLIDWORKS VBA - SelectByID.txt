@@ -1,0 +1,73 @@
+Option Explicit 'Enforces variable declaration, reducing errors from misspelled variable names
+
+'This macro opens a SolidWorks drawing, selects a specific drawing view, and prepares it for further actions.
+'The SelectByID2 method can be used to select almost any entity in SolidWorks, such as drawing views, faces, edges,
+'features, sketch entities, etc., by specifying the appropriate ID type (e.g., "DRAWINGVIEW", "FACE", "EDGE", etc.).
+'In this case, it selects a drawing view by its name. The flexibility of SelectByID2 allows you to interact with
+'various entities programmatically, based on their names or IDs.
+
+Sub main()
+
+    'Declare a variable to hold the SolidWorks application object
+    Dim swApp As SldWorks.SldWorks
+    
+    'Declare a variable to hold the opened model document (part or drawing)
+    Dim swModel As SldWorks.ModelDoc2
+    
+    'Declare a variable to hold the opened drawing document
+    Dim swOpenDoc As SldWorks.ModelDoc2
+    
+    'Declare a variable specifically to hold the drawing document
+    Dim swDraw As SldWorks.DrawingDoc
+    
+    'Declare a string variable to hold the file path to the drawing
+    Dim modelDrawingPath As String
+    
+    'Declare a string variable to hold the file path to the part model
+    Dim strModelPath As String
+    
+    'Set the swApp variable to reference the currently running instance of SolidWorks
+    Set swApp = Application.SldWorks
+    
+    'Get the currently active document in SolidWorks and set it to swModel
+    'This retrieves the part or drawing that is currently open and active in SolidWorks
+    Set swModel = swApp.ActiveDoc
+    
+    'Set the part file path for future reference (the part you want to link to the drawing)
+    'This defines the location of the part model on your computer
+    strModelPath = "C:\Users\vytau\OneDrive\Desktop\Part1.SLDPRT"
+    
+    'Set the drawing file path for the drawing you want to open
+    'This specifies the location of the drawing file (.SLDDRW) on your computer
+    modelDrawingPath = "C:\Users\vytau\OneDrive\Desktop\Part1.SLDDRW"
+    
+    'Open the drawing document using the OpenDoc6 method. The arguments include:
+    ' - modelDrawingPath: Path of the drawing file
+    ' - 3: Document type (3 corresponds to a drawing document)
+    ' - swOpenDocOptions_Silent: Open silently without displaying dialogs or prompts
+    ' - Empty: Other arguments (e.g., for error handling or warnings) are left empty for simplicity
+    Set swOpenDoc = swApp.OpenDoc6(modelDrawingPath, 3, swOpenDocOptions_Silent, Empty, Empty, Empty)
+    
+    'Set swDraw to refer to the opened document (the drawing)
+    'Even though swModel is already assigned to the active document, it's of a general type (ModelDoc2), 
+    'which can represent a part, assembly, or drawing. 
+    'However, for drawing-specific operations, you need to cast swModel to the DrawingDoc type.
+    'Casting is important because the DrawingDoc object has additional methods and properties
+    'that are not available in the general ModelDoc2 object (e.g., creating drawing views, inserting annotations).
+    'Here, swModel (a general ModelDoc2 object) is being cast to swDraw (a DrawingDoc object), 
+    'so you can access drawing-specific functionality.
+    Set swDraw = swModel
+    
+    'Select drawing view by ID. The ID is the name of the drawing view in SolidWorks.
+    'For example, "Drawing View12" is the name of the view you want to select.
+    'The arguments for SelectByID2 include:
+    ' - "Drawing View12": The name of the view you want to select
+    ' - "DRAWINGVIEW": Specifies that you're selecting a drawing view
+    ' - 0, 0, 0: Coordinates (not used in this case)
+    ' - False: Boolean to specify whether multiple selections are allowed
+    ' - 0: Selection options (not relevant in this case)
+    ' - Nothing: Reference for related objects (not needed here)
+    ' - 0: Selection mark (not used in this case)
+    swModel.Extension.SelectByID2 "Drawing View12", "DRAWINGVIEW", 0, 0, 0, False, 0, Nothing, 0
+
+End Sub

@@ -1,0 +1,23 @@
+Sub ExampleProcedure()
+
+    'This acts like a "try" block
+    On Error GoTo ErrorHandler 
+
+    'Your code that may cause an error
+    Dim result As Double
+
+    'This will cause a division by zero error
+    result = 10 / 0 
+
+    MsgBox "The result is " & result
+
+    'Exit to prevent the error handler from executing if no error occurs
+    Exit Sub 
+
+ErrorHandler:
+    'This acts like a "catch" block
+    MsgBox "An error occurred: " & Err.Description
+
+    'Handle the error (e.g., logging, cleanup, etc.)
+
+End Sub
