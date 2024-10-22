@@ -1,0 +1,30 @@
+Option Explicit 'Enforces variable declaration, reducing errors from misspelled variable names
+
+Sub main()
+
+    Dim swApp As SldWorks.SldWorks
+    Dim swModel As SldWorks.ModelDoc2
+    Dim docType As Long
+
+    'Get SolidWorks application instance
+    Set swApp = Application.SldWorks
+
+    'Get the active document
+    Set swModel = swApp.ActiveDoc
+
+    'Get the document type
+    docType = swModel.GetType()
+
+    'Check and output document type
+    Select Case docType
+        Case swDocPART
+            Debug.Print "This is a Part document."
+        Case swDocASSEMBLY
+            Debug.Print "This is an Assembly document."
+        Case swDocDRAWING
+            Debug.Print "This is a Drawing document."
+        Case Else
+            Debug.Print "Unknown document type."
+    End Select
+    
+End Sub

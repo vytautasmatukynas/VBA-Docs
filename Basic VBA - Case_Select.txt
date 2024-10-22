@@ -1,0 +1,29 @@
+Sub HandleStringValue()
+
+    Dim inputString As String
+
+    'Example input string
+    inputString = "Apple"
+
+    'Check the value of the input string using Select Case
+    Select Case inputString
+
+        Case "Apple"
+            MsgBox "The input is an Apple."
+            'Additional actions for Apple can go here
+            
+        Case "Banana"
+            MsgBox "The input is a Banana."
+            'Additional actions for Banana can go here
+            
+        Case "Cherry"
+            MsgBox "The input is a Cherry."
+            'Additional actions for Cherry can go here
+            
+        Case Else
+            MsgBox "Unknown fruit."
+            'Handle any unknown fruit cases here
+
+    End Select
+
+End Sub
